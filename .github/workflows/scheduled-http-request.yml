@@ -2,7 +2,7 @@ name: Scheduled HTTP Request
 
 on:
   schedule:
-    - cron: '* * * * *'
+    - cron: '*/5 * * * *'
 
 jobs:
   http-request:
@@ -19,7 +19,11 @@ jobs:
       - name: Send HTTP request
         run: node app.js
       - name: Upload response
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: response
           path: response.txt
+      - name: upload files
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Changed files
