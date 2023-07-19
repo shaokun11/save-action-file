@@ -2,7 +2,7 @@ name: Scheduled HTTP Request
 
 on:
   schedule:
-    - cron: '* * * * * *' 
+    - cron: '* * * * *'
 
 jobs:
   http-request:
