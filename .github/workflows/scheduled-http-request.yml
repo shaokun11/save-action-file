@@ -7,15 +7,13 @@ on:
 jobs:
   http-request:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.GH_TOKEN }}
       - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '18.x'
+        uses: actions/setup-node@v3
       - name: Install dependencies
         run: npm install
       - name: Send HTTP request
@@ -23,7 +21,7 @@ jobs:
       - name: Upload response
         uses: actions/upload-artifact@v3
         with:
-          name: response
+          name: response.txt
           path: response.txt
       - name: upload files
         uses: stefanzweifel/git-auto-commit-action@v4
