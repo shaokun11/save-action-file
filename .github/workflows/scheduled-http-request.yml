@@ -1,8 +1,8 @@
 name: Scheduled HTTP Request
 
-on:
-  schedule:
-    - cron: '*/5 * * * *'
+on: [push, fork]
+  # schedule:
+  #   - cron: '*/5 * * * *'
 
 jobs:
   http-request:
